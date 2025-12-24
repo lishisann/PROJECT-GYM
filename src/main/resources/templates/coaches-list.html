@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Реестр тренеров</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root { --slate: #343a40; --rose: #d63384; --bg: #f0f2f5; --soft-rose: #fff0f5; }
+        body { background-color: var(--bg); color: var(--slate); font-family: 'Segoe UI', sans-serif; }
+        .main-card { background: white; border-radius: 16px; padding: 40px; margin-top: 30px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); }
+        .rose-line { border-left: 6px solid var(--rose); padding-left: 15px; }
+        .btn-rose { background-color: var(--rose); color: white; font-weight: 600; border-radius: 8px; }
+        .btn-rose:hover { background-color: #b82a6f; color: white; }
+        .alert-rose { background-color: var(--soft-rose); color: var(--rose); border: 1px solid var(--rose); border-radius: 12px; padding: 15px; font-weight: 600; }
+        .badge-rose { background-color: var(--soft-rose); color: var(--rose); border: 1px solid var(--rose); font-weight: 700; padding: 6px 14px; border-radius: 20px; }
+        .table thead { background-color: #f8f9fa; color: #6c757d; }
+    </style>
+</head>
+<body class="container">
+<div class="main-card">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold rose-line">Реестр тренеров</h2>
+        <a href="/" class="btn btn-outline-secondary btn-sm fw-bold">В меню</a>
+    </div>
+
+    <div th:if="${error}" class="alert-rose mb-4" th:text="${error}"></div>
+
+    <div class="row mb-4 gy-3">
+        <div class="col-md-6"><a href="/coaches/new" class="btn btn-rose px-4 py-2">＋ Добавить специалиста</a></div>
+        <div class="col-md-6">
+            <form th:action="@{/coaches}" method="get" class="input-group">
+                <input type="text" name="search" th:value="${search}" class="form-control" placeholder="Поиск по ФИО...">
+                <button class="btn btn-dark fw-bold" type="submit">Найти</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead><tr><th>ФИО Сотрудника</th><th>Специализация</th><th>Контакты</th><th class="text-center">Действия</th></tr></thead>
+            <tbody>
+            <tr th:each="c : ${items}">
+                <td th:text="${c.fullName}" class="fw-bold"></td>
+                <td><span class="badge badge-rose" th:text="${c.specialization != null ? c.specialization.name : '—'}"></span></td>
+                <td th:text="${c.phone}" class="text-muted"></td>
+                <td class="text-center">
+                    <a th:href="@{/coaches/edit/{id}(id=${c.id})}" class="btn btn-sm btn-outline-secondary me-2">Изменить</a>
+                    <a th:href="@{/coaches/delete/{id}(id=${c.id})}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Удалить специалиста?')">Удалить</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

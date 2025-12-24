@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gym Workspace</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --slate: #343a40;
+            --rose: #d63384;
+            --line-rose: #ffc2cc;
+            --bg: #bbbbbb;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--slate);
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: var(--slate) !important;
+            border-bottom: 6px solid var(--line-rose);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .navbar-brand { font-size: 1.5rem; letter-spacing: 1px; }
+
+        .card {
+            border: none;
+            border-radius: 25px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 3rem !important;
+            min-height: 420px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 40px rgba(214, 51, 132, 0.2);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .stat-val {
+            color: var(--rose);
+            font-size: 6rem;
+            font-weight: 900;
+            margin: 20px 0;
+        }
+        .btn-rose {
+            background-color: var(--rose);
+            color: white;
+            border-radius: 12px;
+            font-weight: 700;
+            border: none;
+            padding: 15px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+        .btn-rose:hover { background-color: #b82a6f; color: white; }
+        h1 { color: #212529; font-size: 3rem; }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-dark mb-5 py-3">
+    <div class="container">
+        <span class="navbar-brand fw-bold">💪🏼 GYM WORKOUT</span>
+    </div>
+</nav>
+
+<div class="container text-center pb-5">
+    <div class="row mb-5">
+        <div class="col-12">
+            <h1 class="fw-bold mb-3">Панель управления клубом</h1>
+            <p class="fs-5 text-dark opacity-75">Административная система клуба "GYM"</p>
+        </div>
+    </div>
+
+    <div class="row g-5 justify-content-center">
+        <div class="col-lg-4 col-md-6">
+            <div class="card p-4">
+                <div class="stat-label">Тренеры</div>
+                <div class="stat-val" th:text="${coachCount}">0</div>
+                <a href="/coaches" class="btn btn-rose w-100">ОТКРЫТЬ РЕЕСТР</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card p-4">
+                <div class="stat-label">Клиенты</div>
+                <div class="stat-val" th:text="${clientCount}">0</div>
+                <a href="/clients" class="btn btn-rose w-100">ОТКРЫТЬ РЕЕСТР</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card p-4">
+                <div class="stat-label">Направления</div>
+                <div class="stat-val" th:text="${specCount}">0</div>
+                <a href="/specs" class="btn btn-rose w-100">ОТКРЫТЬ РЕЕСТР</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

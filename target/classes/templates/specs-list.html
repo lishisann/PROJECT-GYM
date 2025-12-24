@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Направления</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root { --slate: #343a40; --rose: #d63384; --soft-rose: #fff0f5; }
+        body { background-color: #fcfcfc; color: var(--slate); font-family: 'Segoe UI', sans-serif; }
+        .main-card { background: white; border-radius: 20px; padding: 40px; margin-top: 30px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); }
+        .btn-rose { background-color: var(--rose); color: white; border-radius: 8px; font-weight: 600; }
+        .alert-rose { background-color: var(--soft-rose); color: var(--rose); border: 1px solid var(--rose); border-radius: 12px; padding: 15px; margin-bottom: 25px; font-weight: 600; }
+        .add-box { background-color: #f8f9fa; border-radius: 15px; padding: 25px; border: 1px dashed var(--rose); margin-bottom: 30px; }
+        .error-msg { color: #d63384; font-size: 0.85rem; font-weight: 600; margin-top: 5px; }
+    </style>
+</head>
+<body class="container">
+<div class="main-card">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold" style="border-left: 6px solid var(--rose); padding-left: 15px;">Направления клуба</h2>
+        <a href="/" class="btn btn-outline-secondary btn-sm fw-bold">В меню</a>
+    </div>
+
+    <div th:if="${error}" class="alert-rose" th:text="${error}"></div>
+
+    <div class="add-box">
+        <form th:action="@{/specs/save}" th:object="${newSpec}" method="post" class="row g-3 align-items-center">
+            <div class="col-auto"><label class="fw-bold">Новое направление:</label></div>
+            <div class="col-md-5">
+                <input type="text" th:field="*{name}"
+                       th:classappend="${#fields.hasErrors('name')} ? 'is-invalid' : ''"
+                       class="form-control" placeholder="Напр: Танцы" required>
+                <div class="error-msg" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+            </div>
+            <div class="col-auto"><button type="submit" class="btn btn-rose px-4">Добавить</button></div>
+        </form>
+    </div>
+
+    <form th:action="@{/specs}" method="get" class="input-group mb-4" style="max-width: 400px;">
+        <input type="text" name="search" th:value="${search}" class="form-control" placeholder="Поиск направления...">
+        <button class="btn btn-dark" type="submit">Найти</button>
+    </form>
+
+    <table class="table table-hover align-middle">
+        <thead class="table-light"><tr><th>ID</th><th>НАИМЕНОВАНИЕ</th><th class="text-center">ДЕЙСТВИЯ</th></tr></thead>
+        <tbody>
+        <tr th:each="s : ${items}">
+            <td th:text="${s.id}" class="text-muted small"></td>
+            <td th:text="${s.name}" class="fw-bold"></td>
+            <td class="text-center">
+                <a th:href="@{/specs/edit/{id}(id=${s.id})}" class="btn btn-sm btn-outline-secondary me-2">Изменить</a>
+                <a th:href="@{/specs/delete/{id}(id=${s.id})}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Удалить?')">Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
