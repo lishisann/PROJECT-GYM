@@ -16,22 +16,24 @@
 
 Связи между данными: реализация связи «Многие-к-Одному» (много тренеров на одну специализацию).
 ## Структура проекта
+```
 src/
 ├── main/
 │   ├── java/com/example/Gym/
-│   │   ├── GymApplication.java             # Главный класс
+│   │   ├── GymApplication.java             # Главный класс, запускающий всё приложение
 │   │   ├── controller/
-│   │   │   └── AppController.java          # Контроллер по страницам и запросам пользователя
+│   │   │   └── AppController.java          # Обрабатывает переходы по страницам и запросы пользователя
 │   │   ├── model/
-│   │   │   ├── Client.java                 # Класс с сущностью клиента 
-│   │   │   ├── Coach.java                  # Класс с сущностью тренера 
-│   │   │   └── Specialization.java         # Класс с сущностью специализации 
+│   │   │   ├── Client.java                 # Описание данных клиента (имя, телефон и т.д.)
+│   │   │   ├── Coach.java                  # Описание данных тренера
+│   │   │   └── Specialization.java         # Описание направлений тренировок
 │   │   └── repository/
-│   │       ├── ClientRepository.java       # Репозиторий для работы с БД (клиенты)
-│   │       ├── CoachRepository.java        # Репозиторий для работы с БД (тренеры)
-│   │       └── SpecializationRepository.java # Репозиторий для работы с БД (специализации)
+│   │       ├── ClientRepository.java       # Команды БД для работы с клиентами
+│   │       ├── CoachRepository.java        # Команды БД для работы с тренерами
+│   │       └── SpecializationRepository.java # Команды БД для специализаций
 │   └── resources/
-│       ├── templates/                      
+│       ├── static/                         # Статические файлы (CSS, картинки)
+│       ├── templates/                      # HTML-страницы (Thymeleaf)
 │       │   ├── index.html                  # Главная страница (меню)
 │       │   ├── clients-list.html           # Таблица всех клиентов
 │       │   ├── client-form.html            # Форма создания/редактирования клиента
@@ -39,4 +41,5 @@ src/
 │       │   ├── coach-form.html             # Форма добавления тренера
 │       │   ├── specs-list.html             # Список специализаций
 │       │   └── spec-edit-form.html         # Редактирование направлений
-│       └── application.properties          # Конфигурация
+│       └── application.properties          # Настройки подключения к PostgreSQL
+```
