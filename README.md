@@ -20,19 +20,19 @@
 src/
 ├── main/
 │   ├── java/com/example/Gym/
-│   │   ├── GymApplication.java             # Главный класс, запускающий всё приложение
+│   │   ├── GymApplication.java             # Главный класс
 │   │   ├── controller/
-│   │   │   └── AppController.java          # Обрабатывает переходы по страницам и запросы пользователя
+│   │   │   └── AppController.java          # Контроллер по страницам и запросам пользователя
 │   │   ├── model/
-│   │   │   ├── Client.java                 # Описание данных клиента (имя, телефон и т.д.)
-│   │   │   ├── Coach.java                  # Описание данных тренера
-│   │   │   └── Specialization.java         # Описание направлений тренировок
+│   │   │   ├── Client.java                 # Класс с сущностью клиента
+│   │   │   ├── Coach.java                  # Класс с сущностью тренера
+│   │   │   └── Specialization.java         # Класс с сущностью специализации
 │   │   └── repository/
-│   │       ├── ClientRepository.java       # Команды БД для работы с клиентами
-│   │       ├── CoachRepository.java        # Команды БД для работы с тренерами
-│   │       └── SpecializationRepository.java # Команды БД для специализаций
+│   │       ├── ClientRepository.java       # Репозиторий для работы с БД (клиенты)
+│   │       ├── CoachRepository.java        # Репозиторий для работы с БД (тренеры)
+│   │       └── SpecializationRepository.java # Репозиторий для работы с БД (специализации)
 │   └── resources/
-│       ├── templates/                      # HTML-страницы (Thymeleaf)
+│       ├── templates/                    
 │       │   ├── index.html                  # Главная страница (меню)
 │       │   ├── clients-list.html           # Таблица всех клиентов
 │       │   ├── client-form.html            # Форма создания/редактирования клиента
@@ -40,5 +40,5 @@ src/
 │       │   ├── coach-form.html             # Форма добавления тренера
 │       │   ├── specs-list.html             # Список специализаций
 │       │   └── spec-edit-form.html         # Редактирование направлений
-│       └── application.properties          # Настройки подключения к PostgreSQL
+│       └── application.properties          # Конфигурация
 ```
