@@ -32,7 +32,6 @@ src/
 │   │       ├── CoachRepository.java        # Команды БД для работы с тренерами
 │   │       └── SpecializationRepository.java # Команды БД для специализаций
 │   └── resources/
-│       ├── static/                         # Статические файлы (CSS, картинки)
 │       ├── templates/                      # HTML-страницы (Thymeleaf)
 │       │   ├── index.html                  # Главная страница (меню)
 │       │   ├── clients-list.html           # Таблица всех клиентов
