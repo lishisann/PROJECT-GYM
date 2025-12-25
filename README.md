@@ -1,4 +1,4 @@
-# Итоговая работа по дисциплине "Язык программирования Java"
+# Итоговая работа по дисциплине "Язык программирования Java". Выполнила Андреева Любовь, группа ИТ-7
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/074d656d-a571-4f81-ac6d-aace5ab88aba" />
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/1726632c-b60e-4bd5-907c-23b2c737e97d" />
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/7ca62bf6-f345-44ae-a9a3-f4b191d95b09" />
